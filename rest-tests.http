@@ -1,0 +1,80 @@
+### --- Health Check ---
+GET http://localhost:10001/echo
+Content-Type: text/plain
+
+Hello World!
+
+
+### --- AUTHENTICATION ---
+
+### Register a new user
+POST http://localhost:10001/api/users/register
+Content-Type: application/json
+
+{
+  "username": "laurin",
+  "password": "secret123"
+}
+
+
+### Login to get the token
+POST http://localhost:10001/api/users/login
+Content-Type: application/json
+
+{
+  "username": "laurin",
+  "password": "secret123"
+}
+
+### Expected response:
+# {
+#   "token": "laurin-mrpToken"
+# }
+
+### --- MEDIA CRUD TESTS ---
+# Replace the token value below with the token from the login response
+
+@token = laurin-mrpToken
+@mediaId = 00000000-0000-0000-0000-000000000000
+
+
+### Create new media entry
+POST http://localhost:10001/api/media
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Inception",
+  "description": "Dream within a dream.",
+  "mediaType": "MOVIE",
+  "releaseYear": 2010,
+  "genres": ["Sci-Fi", "Thriller"],
+  "ageRestriction": 12
+}
+
+### Get all media
+GET http://localhost:10001/api/media
+Authorization: Bearer {{token}}
+
+### Get one media by ID
+# Replace {{mediaId}} with actual ID from POST response
+GET http://localhost:10001/api/media/{{mediaId}}
+Authorization: Bearer {{token}}
+
+### Update existing media
+PUT http://localhost:10001/api/media/{{mediaId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Inception (Extended)",
+  "description": "Updated description",
+  "mediaType": "MOVIE",
+  "releaseYear": 2010,
+  "genres": ["Sci-Fi", "Thriller"],
+  "ageRestriction": 16
+}
+
+### Delete media
+DELETE http://localhost:10001/api/media/{{mediaId}}
+Authorization: Bearer {{token}}
