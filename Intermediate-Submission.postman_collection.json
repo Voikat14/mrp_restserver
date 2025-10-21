@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "c020858e-ccec-4bee-805e-f198c315f294",
+		"name": "Intermediate-Submission",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49109658",
+		"_collection_link": "https://if24b292-5223468.postman.co/workspace/if24b292's-Workspace~c2d2451f-1097-4b79-8884-0ef2982c7a96/collection/49109658-c020858e-ccec-4bee-805e-f198c315f294?action=share&source=collection_link&creator=49109658"
+	},
+	"item": [
+		{
+			"name": "http://localhost:10001/api/users/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Sepp\",\r\n    \"password\": \"1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				},
+				"description": "Username und Passwort für Registrierung in JSON-Format angeben"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:10001/api/users/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Sepp\",\r\n    \"password\": \"1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				},
+				"description": "Bereits registrierte User-Daten in JSON-Format eingeben\r\nreturn Token"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:10001/api/media",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Sepp-mrpToken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Inception\",\r\n  \"description\": \"Dream within a dream.\",\r\n  \"mediaType\": \"MOVIE\",\r\n  \"releaseYear\": 2010,\r\n  \"genres\": [\"Sci-Fi\", \"Thriller\"],\r\n  \"ageRestriction\": 12\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/media",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"media"
+					]
+				},
+				"description": "Bei Authorize Bearer auswählen und rechts den erhaltenen Token eingeben aus der Login response. Media eingabe im JSON-Format"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:10001/api/media",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Sepp-mrpToken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Inception\",\r\n  \"description\": \"Dream within a dream.\",\r\n  \"mediaType\": \"MOVIE\",\r\n  \"releaseYear\": 2010,\r\n  \"genres\": [\"Sci-Fi\", \"Thriller\"],\r\n  \"ageRestriction\": 12\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/media",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"media"
+					]
+				},
+				"description": "Ebenfalls User-Token im Bearer Auth eingeben. Es werden alle Medien ausgegeben. Return 200 OK "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:10001/api/media/755ec8bc-bc1e-48c5-9716-c58a1251d094",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Sepp-mrpToken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Inception\",\r\n  \"description\": \"Dream within a dream.\",\r\n  \"mediaType\": \"MOVIE\",\r\n  \"releaseYear\": 2010,\r\n  \"genres\": [\"Sci-Fi\", \"Thriller\"],\r\n  \"ageRestriction\": 12\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/media/755ec8bc-bc1e-48c5-9716-c58a1251d094",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"media",
+						"755ec8bc-bc1e-48c5-9716-c58a1251d094"
+					]
+				},
+				"description": "Hier ein Zugriff auf ein spezifisches Media über die ID. Return 200 OK"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:10001/api/media/755ec8bc-bc1e-48c5-9716-c58a1251d094",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Sepp-mrpToken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Inception - Extended\",\r\n  \"description\": \"Update Dream within a dream.\",\r\n  \"mediaType\": \"MOVIE\",\r\n  \"releaseYear\": 2011,\r\n  \"genres\": [\"Sci-Fi\", \"Thriller\"],\r\n  \"ageRestriction\": 14\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/media/755ec8bc-bc1e-48c5-9716-c58a1251d094",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"media",
+						"755ec8bc-bc1e-48c5-9716-c58a1251d094"
+					]
+				},
+				"description": "PUT updated den Datensatz. Datensatz muss im JSON-Format eingegeben werden. Return 200 OK"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:10001/api/media/755ec8bc-bc1e-48c5-9716-c58a1251d094",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Sepp-mrpToken",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer laurin-mrpToken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Inception - Extended\",\r\n  \"description\": \"Update Dream within a dream.\",\r\n  \"mediaType\": \"MOVIE\",\r\n  \"releaseYear\": 2011,\r\n  \"genres\": [\"Sci-Fi\", \"Thriller\"],\r\n  \"ageRestriction\": 14\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:10001/api/media/755ec8bc-bc1e-48c5-9716-c58a1251d094",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"media",
+						"755ec8bc-bc1e-48c5-9716-c58a1251d094"
+					]
+				},
+				"description": "DELETE löscht den Datensatz anhand der ID im Pfad. Return 204 No Content.\r\nBei erneutem Aufruf return 403 Forbidden or not found."
+			},
+			"response": []
+		}
+	]
+}
