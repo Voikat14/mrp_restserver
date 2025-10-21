@@ -1,0 +1,113 @@
+MRP Intermediate Submission – Development Protocol
+--------------------------------------------------
+
+Student: Laurin Strobl
+Course: Software Engineering – 3rd Semester
+Date: October 2025
+Project: REST Server – Login / Register / CRUD
+
+--------------------------------------------------
+1. Project Goal
+--------------------------------------------------
+The goal of this intermediate submission was to implement a REST-based HTTP server in Java that supports:
+- User registration and login with password hashing
+- Token-based authentication for protected endpoints
+- CRUD functionality for a "Media" resource (movies, series, etc.)
+- Integration with PostgreSQL for persistent data storage
+
+--------------------------------------------------
+2. Technologies and Tools
+--------------------------------------------------
+Language: Java 21
+Build Tool: Maven
+Database: PostgreSQL
+SQL Layer: Custom Repository Pattern
+Password Hashing: BCrypt
+REST Client: Postman
+Version Control: Git + GitHub
+IDE: IntelliJ IDEA
+Documentation: README.md, rest-tests.http, Postman Collection
+
+--------------------------------------------------
+3. Implemented Features
+--------------------------------------------------
+Authentication:
+- Implemented AuthService with registration and login.
+- Passwords hashed using BCrypt.
+- Token returned after login in the format <username>-mrpToken.
+- Token verification for all protected endpoints.
+
+CRUD Operations (Media):
+- Implemented /api/media with full Create, Read, Update, Delete functionality.
+- Each media entry contains title, description, type, release year, genres, and age restriction.
+- Linked each media entry to the creator user.
+
+Authorization:
+- SecurityHandler checks Authorization header for valid Bearer token.
+- Unauthorized requests return HTTP 401 Unauthorized.
+
+Database:
+- PostgreSQL schema created using db/init-mrp.sql.
+- Tables: mrp_user and mrp_media.
+
+Testing:
+- All endpoints tested with Postman and rest-tests.http.
+
+--------------------------------------------------
+4. Development Process
+--------------------------------------------------
+1. Setup custom HTTP server and verified echo endpoint.
+2. Implemented user registration and login with BCrypt.
+3. Added token-based authentication and SecurityHandler.
+4. Fixed 401 Unauthorized errors after restart by improving token verification.
+5. Implemented MediaHandler and MediaService for CRUD operations.
+6. Verified full CRUD cycle in Postman.
+7. Created GitHub repository and documentation files.
+
+--------------------------------------------------
+5. Problems and Solutions
+--------------------------------------------------
+Problem: 401 Unauthorized after server restart
+Solution: Fallback in AuthService.verify() to check user directly in DB if token not in memory.
+
+Problem: Token not recognized in handler
+Solution: Added debug output in SecurityHandler to inspect Bearer tokens.
+
+Problem: Missing CRUD persistence
+Solution: Implemented MediaRepository and MediaService classes.
+
+Problem: Git warnings about line endings
+Solution: Configured Git with core.autocrlf=true.
+
+--------------------------------------------------
+6. Testing Summary
+--------------------------------------------------
+All endpoints tested successfully with valid tokens.
+
+Endpoints and Results:
+- POST /api/users/register -> 201 Created
+- POST /api/users/login -> 200 OK
+- GET /api/media -> 200 OK
+- POST /api/media -> 201 Created
+- GET /api/media/{id} -> 200 OK
+- PUT /api/media/{id} -> 200 OK
+- DELETE /api/media/{id} -> 204 No Content
+
+--------------------------------------------------
+7. Next Steps (Final Submission)
+--------------------------------------------------
+- Add persistent session tokens (JWT).
+- Implement JUnit tests for AuthService and MediaService.
+- Add Docker Compose for database and server.
+- Improve error handling and validation.
+
+--------------------------------------------------
+8. References
+--------------------------------------------------
+Postman Documentation: https://www.postman.com/
+BCrypt Java Library: https://www.mindrot.org/projects/jBCrypt/
+Java HTTP Server API: https://docs.oracle.com/en/java/javase/21/core/java-http.html
+
+--------------------------------------------------
+End of protocol.txt
+--------------------------------------------------
