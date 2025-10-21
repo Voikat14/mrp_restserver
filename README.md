@@ -40,3 +40,11 @@ Die Login-Daten sind im DatabaseManager.java File zu finden (Testen ob connectio
 
 Anschließend im Main.java builden und Starten. Es sollte daraufhin ausgegeben werden "Server started on port 10001".
 
+DB-access:
+db: mrpdb
+username: mrpuser
+password: mrpuser
+
+
+https://github.com/Voikat14/mrp_restserver.git
+
